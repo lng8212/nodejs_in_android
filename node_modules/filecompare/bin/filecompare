@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+const parseOpts = require('minimist');
+const fs = require('fs');
+const compare = require('../index.js');
+
+const opts = parseOpts(process.argv.slice(2), {});
+const files = opts._;
+
+const checkFiles = function(list, cb) {
+	if ((!list.length) || (list.length != 2)) {
+		cb("File list not valid");
+	}
+  try {
+
+    fs.accessSync(list[0]);
+    fs.accessSync(list[1]);
+
+  } catch (e) {
+    return cb(e);
+  }
+  return cb(null,list[0],list[1]);
+
+}
+
+checkFiles(files,function(err, file1, file2) {
+  if (err) {
+    console.log(err);
+    process.exitCode = 1;
+  }
+
+  compare(file1,file2,function(isEqual) {
+    console.log("isEqual?",isEqual);
+    process.exitCode = 0;
+  });
+
+})
