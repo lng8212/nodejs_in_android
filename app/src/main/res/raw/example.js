@@ -191,8 +191,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   } = _$$_REQUIRE(_dependencyMap[0]);
   setInterval(() => {}, 1000);
   console.log('Hello, World!');
-  LiquidCore.on('ping', () => {
-    console.log("from local");
+  LiquidCore.on('ping', data => {
+    console.log("from local," + data.hallo);
     LiquidCore.emit('pong', {
       message: 'Hello, World from LiquidCore!'
     });

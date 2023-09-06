@@ -1,8 +1,11 @@
 package com.example.test_node
 
+import android.net.wifi.WifiManager
 import android.os.Bundle
+import android.text.format.Formatter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.test_node.databinding.ActivityMainBinding
+import org.json.JSONObject
 import org.liquidplayer.service.MicroService
 
 
@@ -13,13 +16,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        getIP()
         val readyListener = MicroService.EventListener { service, _, _ ->
-            service.emit("ping")
+            val payload = JSONObject()
+            payload.put("hallo", "die Weld")
+            service.emit("ping",payload)
         }
         val pongListener = MicroService.EventListener { _, _, jsonObject ->
             val message = jsonObject.getString("message")
-            runOnUiThread { binding.txtMain.text = message }
+            runOnUiThread {
+//                binding.txtMain.text = message
+            }
         }
         val startListener =
             MicroService.ServiceStartListener { service ->
@@ -32,5 +39,11 @@ class MainActivity : AppCompatActivity() {
             startListener
         )
         service.start()
+    }
+
+    private fun getIP(){
+        val wifiManager = getSystemService(WIFI_SERVICE) as WifiManager
+        val ipAddress: String = Formatter.formatIpAddress(wifiManager.connectionInfo.ipAddress)
+        binding.txtIp.text = ipAddress
     }
 }

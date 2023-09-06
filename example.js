@@ -16,10 +16,10 @@ setInterval(()=>{}, 1000)
 console.log('Hello, World!')
 
 // Listen for a request from the host for the 'ping' event
-LiquidCore.on( 'ping', () => {
+LiquidCore.on( 'ping', (data) => {
     // When we get the ping from the host, respond with "Hello, World!"
     // and then exit.
-    console.log("from local")
+    console.log("from local," +data.hallo)
     LiquidCore.emit( 'pong', { message: 'Hello, World from LiquidCore!' } )
     process.exit(0)
 })
