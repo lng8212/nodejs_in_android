@@ -17,7 +17,7 @@
         tools:text="10.0.0.2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/txt_pair"
+        android:id="@+id/btn_pair"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pair" />
@@ -45,7 +45,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/txt_connect"
+        android:id="@+id/btn_connect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Connect" />
@@ -57,28 +57,28 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/txt_vol_plus"
+            android:id="@+id/btn_vol_plus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Vol+" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/txt_vol_minus"
+            android:id="@+id/btn_vol_minus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Vol-" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/txt_menu"
+            android:id="@+id/btn_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Menu" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/txt_home"
+            android:id="@+id/btn_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
